@@ -26,7 +26,7 @@ export default function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.WEB_3_FORM_KEY, // <-- Paste your Web3Forms key here
+          access_key: process.env.NEXT_PUBLIC_WEB_3_FORM_KEY, // <-- Paste your Web3Forms key here
           name: formData.name,
           email: formData.email,
           message: formData.message,

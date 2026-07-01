@@ -1,0 +1,136 @@
+import { Project } from "@/types/project";
+
+export const projectsData: Project[] = [
+  {
+    id: "chat-app",
+    title: "Chat App",
+    category: "Web Development",
+    imageUrl: "/chatApp.png",
+    description:
+      "A full-stack real-time chat application featuring direct messaging, group chat creation, and live user status tracking.",
+    longDescription:
+      "This chat application is built with a React frontend and an Express backend. It uses Socket.io to support real-time message exchange and user status synchronization. Data persistence is managed with a PostgreSQL database via Prisma ORM. On the frontend, Zustand handles client state, while TanStack Query is used for caching, pagination, and optimistic UI updates when sending messages.",
+    tech: [
+      "React",
+      "Express",
+      "Socket.io",
+      "PostgreSQL",
+      "Vite",
+      "Tailwind CSS",
+      "Prisma",
+      "Zustand",
+      "TanStack Query",
+      "Zod",
+    ],
+    githubUrl: "https://github.com/AbdullaWalidi11/Chat_App",
+    liveUrl: "",
+    features: [
+      "Real-time message transmission and active status updates via Socket.io.",
+      "Support for both direct private messaging and group conversation rooms.",
+      "Optimistic UI updates for immediate visual feedback on message delivery.",
+      "Cursor-based database pagination for loading chat message history.",
+      "Token-based authentication with JWT, bcrypt hashing, and rate limiting on auth endpoints.",
+    ],
+    challenge:
+      "Handling real-time communication synchronization over Socket.io alongside database-backed conversation history and security rate limiting.",
+    architecture:
+      "A client-server architecture containing a React client layer that communicates via HTTP and WebSockets (Socket.io) to a Node.js/Express API server connected to PostgreSQL via Prisma ORM.",
+  },
+  {
+    id: "melanoscan-app",
+    title: "MelanoScan",
+    category: "Mobile Development",
+    imageUrl: "/melanoScan.jpeg",
+    imageFit: "contain",
+    description:
+      "An offline-first, AI-powered skin cancer screening mobile application featuring real-time image validation, local ML lesion scanning, historical comparison logs, and an interactive patient chatbot.",
+    longDescription:
+      "MelanoScan is an offline-first mobile application built with React Native and Expo. It leverages a local TensorFlow Lite model to run edge-side classifications of dermatological lesions. The app ensures data integrity and high-quality scans using custom camera validation heuristics (analyzing lighting, glare, blur via Laplacian variance, and skin color distribution). Offline data persistence is handled locally with SQLite, which dynamically synchronizes with Firebase (Authentication, Firestore, and Storage) when internet connection is restored. Additionally, the application integrates the Gemini 2.5 Flash API to allow users to compare multiple scans of the same lesion over time—detecting biological evolution (improved, unchanged, worsened) and providing a change magnitude score—and includes a patient-contextualized AI chat assistant.",
+    tech: [
+      "React Native",
+      "TypeScript",
+      "TensorFlow Lite",
+      "NativeWind",
+      "SQLite",
+      "Tailwind CSS",
+      "Expo",
+      "Firebase",
+      "Gemini API",
+      "Expo Print",
+      "Lucide Icons",
+      "Reanimated",
+    ],
+    githubUrl: "https://github.com/AbdullaWalidi11/melanoscanApp",
+    liveUrl: "",
+    features: [
+      "Edge-based skin lesion risk classification using a local TensorFlow Lite model.",
+      "Camera pre-scan validation heuristics checking lighting, blur (Laplacian variance), and skin content.",
+      "Offline-first database implementation using SQLite, with auto-syncing to Firebase Firestore and Storage on network recovery.",
+      "Lesion change tracking and comparative analysis over time using the Gemini 2.5 Flash API.",
+      "Interactive multilingual AI chatbot providing personalized patient context-aware guidance.",
+      "Exportable medical PDF reports including historical timeline comparisons and lesion details for doctors.",
+    ],
+    challenge:
+      "Executing local neural network inference efficiently on low-resource mobile hardware, managing state transitions between local SQLite and cloud Firestore, and developing robust image validation heuristics to prevent poor inputs from reaching the AI model.",
+    architecture:
+      "A mobile client-first architecture built with React Native and Expo, utilizing a local SQLite database for offline-first caching, communicating with Firebase services for cloud backup, and integrating on-device TensorFlow Lite alongside cloud Gemini APIs for real-time risk assessment and lesion comparison.",
+  },
+
+  {
+    id: "podcast-generator",
+    title: "Podcast Generator",
+    category: "Web Development",
+    imageUrl: "/podcast.png",
+    description: "An AI-generated, high-quality, elegant, and modern podcast generator that creates podcast transcripts, synthetizes speech, generates cover images, and can publish episodes to a backend.",
+    longDescription: "Single-page React app (Vite) that uses OpenAI models to generate podcast transcripts (chat/completions), synthesize speech (TTS), and create cover images (DALL·E). It assembles audio by combining intro/outro assets with generated speech, exposes UI to upload/download transcript JSON and audio, and can POST completed podcast data to an external backend API. The frontend uses Tailwind CSS for styling, Framer Motion for animations, and axios for API calls. It also fetches and displays existing podcasts from an external API endpoint.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "OpenAI (chat, images, audio/tts)",
+      "Framer Motion",
+      "Vite",
+      "jsPDF",
+      "axios",
+      "React Router",
+      "PostCSS",
+      "pdfmake",
+    ],
+    githubUrl: "https://github.com/AbdullaWalidi11/Podcast_Generator",
+    liveUrl: "https://podcast-generator-five.vercel.app/",
+    features: [
+      "Generate podcast transcripts using OpenAI chat completions (GPT-4).",
+      "Assign host/guest voices and synthesize line-by-line audio via OpenAI TTS.",
+      "Combine intro/outro audio with generated speech and insert pauses (OfflineAudioContext).",
+      "Generate podcast cover images using DALL·E (image generation).",
+      "Downloadable artifacts: transcript JSON and final WAV audio file.",
+      "Upload transcript JSON to populate the editor and auto-generate assets.",
+      "Send completed podcast (subject, size, content, audio, image) to a backend API (multipart/form-data).",
+      "Front page: fetches and displays special and general podcasts from an external API with audio playback UI and animated UI components.",
+      "Responsive UI built with Tailwind and animated with Framer Motion; loading skeletons for async fetches.",
+    ],
+    challenge: "Safely using OpenAI API keys and performing TTS in-browser (current code uses dangerouslyAllowBrowser=true). Additional challenges are client-side audio processing (combining/encoding buffers), CORS and rate limits for OpenAI and the backend, and ensuring high-quality, coherent multi-voice audio when generating speech line-by-line.",
+    architecture: "React SPA (Vite) frontend that performs transcript generation, TTS, image generation, and audio assembly entirely in the browser using OpenAI SDK. Uses axios to fetch existing podcasts and to POST finalized podcast data to an external backend (https://podcastai.somee.com). Static assets (intro/outro audio) are bundled and used during assembly. Tailwind CSS styles and Framer Motion provide presentation and animation.",
+  },
+    {
+    id: "arabpay-app",
+    title: "ArabPay",
+    category: "Mobile Development",
+    imageUrl: "/arabPay.png",
+    imageFit: "contain",
+    description: "A universal payment identity for the Arab world. ArabPay utilizes a smart routing system to instantly deliver cross-border funds to a user's preferred bank or wallet using just one simple alias. Salam Hack 2026.",
+    longDescription: "ArabPay provides a single, user-friendly payment alias that routes cross-border transfers instantly to the recipient's preferred bank or digital wallet. The mobile-first application (built with Dart/Flutter) integrates native components for performance-sensitive operations and a smart routing engine that selects the optimal payout rail based on currency, destination, fees, and delivery speed. ArabPay focuses on a streamlined UX for sending and receiving remittances, secure on-device key handling, transaction history and reconciliation, and pluggable integrations for banks and wallet providers across the MENA region.",
+    tech: ["Dart", "Flutter", "ExpressJS", "SQLite", "REST APIs"],
+    githubUrl: "https://github.com/AbdullaWalidi11/ArabPay",
+    liveUrl: "",
+    features: [
+      "Alias-based universal payment identity that maps a simple ID to banks and wallets.",
+      "Smart routing engine that selects optimal payout rails for cross-border transfers (cost, speed, and availability).",
+      "Instant delivery to supported banks and wallets where rails permit, with retry and fallback strategies.",
+      "On-device secure key handling and transaction signing using native modules for performance.",
+      "Transaction history, status tracking, and reconciliation logs for senders and receivers.",
+      "Pluggable adapters for integrating new banks, wallets, and local payout providers across markets."
+    ],
+    challenge: "Designing a reliable smart-routing system across heterogeneous payout rails with varying latency and reliability, ensuring regulatory and compliance requirements across jurisdictions, and implementing secure, low-latency native integrations while keeping the mobile app lightweight and responsive.",
+    architecture: "A mobile client-first architecture built with Flutter (Dart) for cross-platform UI, native C++/Swift modules for cryptography and performance-critical routing logic, a backend routing and orchestration service exposing REST/gRPC endpoints, and adapter layers that connect to banks and wallet providers. Local persistence (e.g., SQLite) stores transaction state and offline data, while server-side components handle settlement, reconciliation, and compliance workflows."
+  },
+];

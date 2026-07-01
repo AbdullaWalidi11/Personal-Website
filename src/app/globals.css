@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted-foreground);
+  --color-muted-border: var(--muted-border);
+  
+  --color-accent-blue-dark: var(--accent-blue-dark);
+  --color-accent-blue-light: var(--accent-blue-light);
+  
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Update your :root block with these values */
+:root {
+  /* Default: Dark Theme (Vercel-inspired Sleek Dark) */
+  --background: #1b1b1b;         /* Soft dark charcoal instead of pure black */
+  --foreground: #fafafa;
+  --card-bg: #121212;            /* Adjusted to preserve card separation */
+  --card-border: #222222;        /* Sleek matching card borders */
+  --muted-foreground: #a1a1aa;
+  --muted-border: #27272a;
+  
+  --accent-blue-dark: #001a3d;  
+  --accent-blue-light: #0070f3; 
+}
+
+
+/* Light Theme Overrides */
+:root.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card-bg: #f8fafc;
+  --card-border: #e2e8f0;
+  --muted-foreground: #475569;
+  --muted-border: #cbd5e1;
+  
+  --accent-blue-dark: #e0f2fe;  /* Soft light sky blue for light background glow */
+  --accent-blue-light: #3b82f6; /* Soft blue for text accents */
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Modern minimalist selection styling */
+::selection {
+  background-color: rgba(0, 112, 243, 0.2);
+  color: inherit;
+}
+
+/* Premium Vercel-inspired Technical Grid Background */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+}
+
+.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+/* Ambient Blue Glow overlay for the Hero section */
+.bg-hero-glow {
+  background: radial-gradient(
+    ellipse at top,
+    color-mix(in srgb, var(--accent-blue-light) 25%, transparent),
+    color-mix(in srgb, var(--accent-blue-dark) 8%, transparent),
+    transparent 70%
+  );
+}
+
+
